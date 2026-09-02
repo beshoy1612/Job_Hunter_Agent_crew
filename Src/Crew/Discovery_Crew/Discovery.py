@@ -1,7 +1,7 @@
 from crewai import Task,Agent,Process,Crew,LLM
 from crewai.project import CrewBase,agent,task,crew
-from Scheme import CandidateProfile
-from Tools import github_profile_tool,Linked_in_Profile_Tool
+from Scheme import CandidateProfile,KeywordStrategy,JobResearchResult
+from Tools import github_profile_tool,Linked_in_Profile_Tool,Job_Search_Tool,scrape_job_Tool
 from dotenv import load_dotenv
 import os
 import agentops
@@ -26,14 +26,48 @@ class Discovery_crew:
             llm = llm,
             verbose = True
         )
+    @agent
+    def Keyword_Strategist_Agent(self)->Agent:
+        return Agent(
+            config = self.agents_config["Keyword_Strategist_Agent"],
+            llm = llm,
+            verbose =True
+        )
     
+    @agent
+    def Job_Researcher_Agent(self)->Agent:
+        return Agent(
+            config = self.agents_config["Job_Researcher_Agent"],
+            llm = llm,
+            tools = [Job_Search_Tool,scrape_job_Tool],
+            verbose =True
+        )
+
     @task
     def Profile_Analyst_Task(self)->Task:
         return Task(
             config=self.tasks_config["Profile_Analyst_Task"],
-            output_json=CandidateProfile,
-            Agent= self.Profile_Analyst_Agent,
-            output_file="output/profile_analysis.json"
+            agent= self.Profile_Analyst_Agent(),
+            output_file="output/profile_analysis.json",
+            output_json=CandidateProfile
+        )
+    @task
+    def Keyword_Strategist_Task(self)->Task:
+        return Task(
+            config=self.tasks_config["Keyword_Strategist_Task"],
+            agent=self.Keyword_Strategist_Agent(),
+            output_file="output/Search_Keyword.json",
+            output_json=KeywordStrategy,
+            context=[self.Profile_Analyst_Task()]
+        )
+    @task 
+    def Job_Researcher_Task(self)->Task:
+        return Task(
+            config=self.tasks_config["Job_Researcher_Task"],
+            agent = self.Job_Researcher_Agent(),
+            output_file="output/jobs.json",
+            output_json=JobResearchResult,
+            context=[self.Keyword_Strategist_Task()]
         )
     
     @crew
@@ -44,3 +78,4 @@ class Discovery_crew:
             process=Process.sequential,
             verbose=True
             )
+    

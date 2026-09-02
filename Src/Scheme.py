@@ -35,3 +35,27 @@ class CandidateProfile(BaseModel):
     preferred_locations: Optional[List[str]] = Field(default=None,description="Preferred job locations, if available.")
 
     skill_gaps: Optional[List[str]] = Field(default=None,description="Skills that may need improvement for the candidate's target roles, if identifiable." )
+
+
+class KeywordStrategy(BaseModel):
+    search_queries: list[str] = Field(description="Ready-to-use search queries for job-search platforms.")
+
+
+
+class JobOpportunity(BaseModel):
+    title: str = Field(description="Verified job title.")
+    company: str = Field(description="Company name.")
+    location: Optional[str] = Field(default=None, description="Job location exactly as stated by the source.")
+    work_mode: Optional[str] = Field(default=None, description="Work mode as explicitly stated by the source, such as Remote, Hybrid, or On-site.")
+    description: str = Field(description="Brief verified summary of the job description.")
+    requirements: List[str] = Field(default_factory=list, description="Verified job requirements.")
+    technologies: List[str] = Field(default_factory=list, description="Technologies, tools, or skills mentioned in the job listing.")
+    experience_level: Optional[str] = Field(default=None, description="Experience level required for the job.")
+    relevance_score: float = Field(ge=0.0, le=1.0, description="Relevance score between 0 and 1 based on the candidate profile.")
+    source_url: str = Field(description="URL of the verified job listing.")
+    application_url: Optional[str] = Field(default=None, description="Direct job application URL if available.")
+    source_website: str = Field(description="Website where the job listing was found.")
+
+
+class JobResearchResult(BaseModel):
+    jobs: List[JobOpportunity] = Field(default_factory=list, description="All verified job opportunities that passed the relevance threshold.")

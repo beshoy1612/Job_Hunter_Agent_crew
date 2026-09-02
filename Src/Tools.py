@@ -1,11 +1,16 @@
 from crewai.tools import tool
-import os
 from dotenv import load_dotenv
+from apify_client import ApifyClient
+from tavily import TavilyClient
+from urllib.parse import urlparse
+from scrapegraph_py import Client
 import requests
+import os
 
 load_dotenv()
 token = os.getenv("GITHUB_API_KEY")
-bright_data_token = os.getenv("BRIGHT_API_KEY")
+search_client = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
+scrap_client = Client(api_key=os.getenv("ScrapGraphAI_API_KEY"))
 
 @tool
 def github_profile_tool(username: str) -> dict:
@@ -59,61 +64,290 @@ def github_profile_tool(username: str) -> dict:
         ]
     }
 
+def normalize_linkedin_url(url: str) -> str:
+    """
+    Normalize LinkedIn profile URLs so duplicate URLs
+    can be detected.
+    """
+
+    parsed = urlparse(url)
+
+    path = parsed.path.rstrip("/")
+
+    # Remove trailing slashes and query parameters
+    return f"https://www.linkedin.com{path}".lower()
+
+
+def is_linkedin_profile(url: str) -> bool:
+    """
+    Check whether a URL is a LinkedIn personal profile.
+    """
+
+    if not url:
+        return False
+
+    url = url.lower()
+
+    return (
+        "linkedin.com/in/" in url
+        and "/pub/dir/" not in url
+        and "/jobs/" not in url
+        and "/company/" not in url
+    )
+
+
 @tool
 def Linked_in_Profile_Tool(profile_url: str) -> dict:
     """
-    Fetch public information from a LinkedIn profile using Bright Data's
-    LinkedIn people scraper (synchronous mode).
+    Find publicly available information about a specific LinkedIn profile
+    using Tavily and return a clean structured JSON object.
+
+    The tool:
+    - Searches LinkedIn using Tavily.
+    - Filters out non-profile pages.
+    - Removes duplicate profiles.
+    - Prioritizes the requested profile URL.
+    - Returns clean profile information for the Profile Analyst Agent.
     """
 
-    dataset_id = "gd_l1viktl72bvl7bjuj0"  # LinkedIn people profiles 
+    try:
 
-    headers = {
-        "Authorization": f"Bearer {bright_data_token}",
-        "Content-Type": "application/json"
-    }
+        # ---------------------------------------------------------
+        # 1. Extract LinkedIn username
+        # ---------------------------------------------------------
 
-    payload = [{"url": profile_url}]
+        parsed_url = urlparse(profile_url)
 
-    params = {
-        "dataset_id": dataset_id,
-        "notify": "false",
-        "include_errors": "true"
-    }
+        username = parsed_url.path.strip("/").split("/")[-1]
 
-    response = requests.post(
-        "https://api.brightdata.com/datasets/v3/scrape",
-        headers=headers,
-        params=params,
-        json=payload,
-        timeout=60
-    )
+        if not username:
+            return {
+                "success": False,
+                "error": "Invalid LinkedIn profile URL.",
+                "profile_url": profile_url
+            }
 
-    if response.status_code != 200:
+        # ---------------------------------------------------------
+        # 2. Search specifically for this LinkedIn profile
+        # ---------------------------------------------------------
+
+        query = (
+            f'site:linkedin.com/in/ '
+            f'"{username}"'
+        )
+
+        response = search_client.search(
+            query=query,
+            search_depth="advanced",
+            max_results=10,
+            include_domains=["linkedin.com"],
+            include_answer=True,
+            include_raw_content=True
+        )
+
+        results = response.get("results", [])
+
+        # ---------------------------------------------------------
+        # 3. Keep only LinkedIn personal profiles
+        # ---------------------------------------------------------
+
+        profile_results = []
+
+        for result in results:
+
+            url = result.get("url", "")
+
+            if not is_linkedin_profile(url):
+                continue
+
+            profile_results.append(result)
+
+        # ---------------------------------------------------------
+        # 4. Remove duplicate profiles
+        # ---------------------------------------------------------
+
+        unique_profiles = {}
+
+        for result in profile_results:
+
+            normalized_url = normalize_linkedin_url(
+                result.get("url", "")
+            )
+
+            if normalized_url not in unique_profiles:
+
+                unique_profiles[normalized_url] = result
+
+        profile_results = list(unique_profiles.values())
+
+        # ---------------------------------------------------------
+        # 5. If no profile found
+        # ---------------------------------------------------------
+
+        if not profile_results:
+
+            return {
+                "success": False,
+                "error": "No matching LinkedIn profile found.",
+                "profile_url": profile_url,
+                "username": username
+            }
+
+        # ---------------------------------------------------------
+        # 6. Try to identify the requested profile
+        # ---------------------------------------------------------
+
+        requested_url = normalize_linkedin_url(profile_url)
+
+        selected_profile = None
+
+        for profile in profile_results:
+
+            result_url = normalize_linkedin_url(
+                profile.get("url", "")
+            )
+
+            if result_url == requested_url:
+
+                selected_profile = profile
+                break
+
+        # ---------------------------------------------------------
+        # 7. Fallback to the most relevant result
+        # ---------------------------------------------------------
+
+        if selected_profile is None:
+
+            selected_profile = profile_results[0]
+
+        # ---------------------------------------------------------
+        # 8. Extract clean information
+        # ---------------------------------------------------------
+
+        title = selected_profile.get("title", "")
+
+        content = selected_profile.get(
+            "raw_content"
+        ) or selected_profile.get(
+            "content"
+        ) or ""
+
+        description = selected_profile.get(
+            "description",
+            ""
+        )
+
+        # ---------------------------------------------------------
+        # 9. Return clean structured output
+        # ---------------------------------------------------------
+
         return {
-            "error": f"Could not fetch LinkedIn profile: {profile_url}",
-            "status_code": response.status_code,
-            "details": response.text
+            "success": True,
+
+            "profile": {
+                "name": title.split(" - ")[0].strip()
+                if title
+                else None,
+
+                "headline": title,
+
+                "about": description,
+
+                "url": selected_profile.get(
+                    "url"
+                ),
+
+                "content": content
+            },
+
+            "search_metadata": {
+                "query": query,
+                "profiles_found": len(profile_results),
+                "duplicates_removed": (
+                    len(profile_results)
+                    - len(unique_profiles)
+                )
+            }
         }
 
-    data = response.json()
+    except Exception as e:
 
-    # Bright Data synchronous mode returns a list of records
-    if isinstance(data, list) and len(data) > 0:
-        record = data[0]
-    else:
-        record = data
+        return {
+            "success": False,
+            "error": str(e),
+            "profile_url": profile_url
+        }
 
-    return {
-        "name": record.get("name"),
-        "position": record.get("position"),
-        "about": record.get("about"),
-        "location": record.get("city") or record.get("location"),
-        "current_company": record.get("current_company_name") or record.get("current_company"),
-        "experience": record.get("experience", []),
-        "education": record.get("education", []),
-        "skills": record.get("skills", []),
-        "followers": record.get("followers"),
-        "connections": record.get("connections"),
-        "url": record.get("url") or profile_url
-    }
+@tool
+def Job_Search_Tool(search_queries: list[str], websites: list[str]) -> list[dict]:
+    """
+    Search for job opportunities using Tavily.
+
+    The search is restricted to the websites provided by the user.
+    Returns relevant job search results including title, URL,
+    content, and source website.
+    """
+
+    jobs = []
+
+    for query in search_queries:
+        for website in websites:
+
+            search_query = f"site:{website} {query}"
+
+            response = search_client.search(
+                query=search_query,
+                search_depth="advanced",
+                max_results=5
+            )
+
+            for result in response.get("results", []):
+                jobs.append({
+                    "title": result.get("title"),
+                    "url": result.get("url"),
+                    "content": result.get("content"),
+                    "source": website
+                })
+
+    return jobs
+
+
+@tool
+def scrape_job_Tool(url: str) -> dict:
+    """
+    Extract structured information from a job listing page.
+
+    The tool extracts the job title, company, location, work mode,
+    description, requirements, technologies, experience level,
+    and application URL.
+    """
+
+    prompt = """
+    Extract the following information from this job listing:
+
+    - title
+    - company
+    - location
+    - work_mode
+    - description
+    - requirements
+    - technologies
+    - experience_level
+    - application_url
+
+    Return the result as structured JSON.
+
+    Do not invent information.
+
+    If information is not available, return null.
+
+    Only identify a job as remote when the job listing explicitly
+    states that remote work is supported.
+    """
+
+    result = scrap_client.smartscraper(
+        website_url=url,
+        user_prompt=prompt
+    )
+
+    return result

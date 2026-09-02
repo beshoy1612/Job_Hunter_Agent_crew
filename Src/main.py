@@ -18,7 +18,9 @@ def run():
     inputs = {
         "cv": cv_text,
         "github_link": "https://github.com/beshoy1612",
-        "linkedin_link": "https://www.linkedin.com/in/beshoy-karam/"
+        "linkedin_link": "https://www.linkedin.com/in/beshoy-karam/",
+        "websites":["https://wuzzuf.net","https://www.linkedin.com/jobs"],
+        "relevance_threshold":0.7
     }
 
     result = Discovery_crew().crew().kickoff(inputs=inputs)
@@ -27,3 +29,5 @@ def run():
 
 if __name__ == "__main__":
     run()
+
+    # ,"https://www.bayt.com","https://eg.indeed.com","https://www.glassdoor.com","https://forasna.com","https://www.akhtaboot.com","https://www.tanqeeb.com","https://www.gulftalent.com","https://www.jobzella.com","https://remoteok.com","https://weworkremotely.com"
