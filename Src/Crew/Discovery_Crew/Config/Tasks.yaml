@@ -1,0 +1,56 @@
+Profile_Analyst_Task:
+  description: >
+    Analyze the candidate's professional profile using the provided CV,
+    GitHub profile, and LinkedIn profile.
+
+    First, review the candidate's CV to identify their education,
+    professional experience, technical skills, projects,
+    certifications, and other relevant qualifications.
+
+    Then, use the provided GitHub profile URL to retrieve and analyze
+    the candidate's public repositories, programming languages,
+    technologies, projects, and other relevant technical evidence.
+
+    Finally, use the provided LinkedIn profile URL to retrieve and
+    analyze relevant professional information such as experience,
+    job titles, skills, education, certifications, and career history.
+
+    Cross-reference the information from all available sources.
+    Identify consistent information, additional skills or experience,
+    and any discrepancies between the sources.
+
+    Based on the complete analysis, build a comprehensive candidate
+    profile that can be used by the next agent to generate relevant
+    job search keywords and queries.
+
+    Candidate CV:
+    {cv}
+
+    GitHub Profile:
+    {github_link}
+
+    LinkedIn Profile:
+    {linkedin_link}
+  expected_output: >
+    A structured candidate profile containing:
+    - Professional summary
+    - Technical skills
+    - Programming languages
+    - Frameworks and technologies
+    - Professional experience
+    - Education
+    - Projects
+    - Certifications
+    - GitHub-based technical evidence
+    - LinkedIn-based professional evidence
+    - Career interests
+    - Suitable job roles
+    - Experience level
+    - Preferred location if available
+    - Identified skill gaps
+    - Key strengths
+
+    The output must clearly distinguish between information directly
+    provided by the candidate and information supported by GitHub or
+    LinkedIn evidence.
+  agent: Profile_Analyst_Agent

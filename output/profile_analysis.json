@@ -1,0 +1,96 @@
+{
+  "professional_summary": "Aspiring Software Engineer with hands-on experience in AI/ML, Cloud Technologies, and Competitive Programming. Seeking internship opportunity to apply technical skills in building scalable AI solutions.",
+  "technical_skills": [
+    "Scikit-learn",
+    "NumPy",
+    "Pandas",
+    "Azure ML",
+    "Neural Networks",
+    "Model Deployment",
+    "Microsoft Azure",
+    "Google Colab",
+    "Git",
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving",
+    "Data Preprocessing",
+    "Feature Engineering",
+    "Model Evaluation",
+    "System Programming",
+    "File Handling"
+  ],
+  "programming_languages": [
+    "C++",
+    "Java",
+    "Python",
+    "SQL",
+    "C"
+  ],
+  "frameworks_and_technologies": [
+    "Scikit-learn",
+    "NumPy",
+    "Pandas",
+    "Azure ML",
+    "Microsoft Azure",
+    "Google Colab",
+    "Git",
+    "Jupyter Notebook",
+    "CrewAI",
+    "Pydantic"
+  ],
+  "professional_experience": [
+    "DEPI - Digital Egypt Pioneers Initiative (In Progress) Current – 6 Months, AI & Data Science Track - Microsoft ML Engineer Trainee, Cairo, Egypt - Built and deployed ML models on Azure, gaining hands-on experience in cloud AI solutions",
+    "Summer Training: AI and ML (120 Hours) [National Telecommunication Institute (NTI), Egypt] Jul 2025 - Completed intensive program in supervised/unsupervised learning (Regression, SVM, K-means, PCA)",
+    "Software / ML Intern Elevoo, Cairo, Egypt Aug – Sep 2025 - Preprocessed datasets, engineered features, and built ML models in collaborative environment"
+  ],
+  "education": [
+    "Bachelor of Computer Science 3rd Year (In Progress), Ain Shams University, Egypt 2023 – 2027"
+  ],
+  "projects": [
+    "Mini Operating System [GitHub] - Built functional OS with memory allocation, and fault handling mechanisms, CPU scheduling [C, x86, System Programming].",
+    "Loan Approval Prediction [GitHub] - Loan approval classification (LR, KNN, SVM, DT, RF) using SMOTE [Python, Scikit-learn].",
+    "ML Models From Scratch [GitHub] - KNN, Regression, SVM from scratch.",
+    "Library Management System [GitHub] - Designed Java-based system with OOP principles and data structures [Java].",
+    "Gym Management System [GitHub] - Developed modular C++ system managing members and schedules [C++]."
+  ],
+  "suitable_job_roles": [
+    "Machine Learning Engineer Intern",
+    "AI Software Engineer Intern",
+    "Junior Machine Learning Engineer",
+    "Software Engineer Intern"
+  ],
+  "experience_level": "Intern",
+  "key_strengths": [
+    "Strong background in algorithms and data structures with 400+ competitive programming problems solved on Codeforces and Vjudge",
+    "Hands-on experience with cloud-based machine learning model deployment on Microsoft Azure",
+    "Solid foundation in machine learning theory and implementation from scratch (KNN, SVM, Regression)",
+    "Active participant in competitive programming events such as ECPC 2024",
+    "Huawei HCIA-AI V4.0 Certified top performer"
+  ],
+  "certifications": [
+    "Huawei HCIA-AI V4.0 Certification – Score: 828/1000 (Top performer in AI & ML)",
+    "ECPC 2024 Participant: Egyptian Collegiate Programming Contest - Advanced problem-solving & teamwork",
+    "NVIDIA Deep Learning Certificate: Completed hands-on labs in Deep Learning"
+  ],
+  "github_evidence": [
+    "Public repositories demonstrate implementations in Python, C++, Java, C, and Jupyter Notebooks.",
+    "Repositories include Elevoo-Tasks (machine learning tasks covering student performance, customer segmentation, forest cover type, and loan approval prediction), gym-padel-management-system (C++ system for managing gym memberships, staff, and court bookings), Library-Management-System-OOP (Java catalog system using OOP), Models-From-Scratch (KNN, Linear/Logistic Regression, SVM, and gradient descent variants implemented in Jupyter Notebooks), Operating-System-Projects (educational OS in C featuring memory management, CPU scheduling, and page replacement algorithms), and summer-training-project-applai (Loan approval prediction with data preprocessing, SMOTE, and model training/evaluation).",
+    "Additional evidence of interest in multi-agent AI systems via repositories like Multi-Agent-AI-Systems-Crew_ai and mini_rag."
+  ],
+  "linkedin_evidence": [
+    "LinkedIn profile URL provided (https://www.linkedin.com/in/beshoy-karam/), though detailed profile data could not be fetched due to API access limitations."
+  ],
+  "career_interests": [
+    "Artificial Intelligence",
+    "Machine Learning Engineering",
+    "Cloud AI Solutions",
+    "Software Engineering"
+  ],
+  "preferred_locations": [
+    "Cairo, Egypt"
+  ],
+  "skill_gaps": [
+    "Production-grade software engineering practices (CI/CD pipelines, containerization with Docker, Kubernetes)",
+    "Large-scale production API development (FastAPI, Flask) for serving ML models"
+  ]
+}
