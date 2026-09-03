@@ -277,15 +277,12 @@ def Linked_in_Profile_Tool(profile_url: str) -> dict:
             "error": str(e),
             "profile_url": profile_url
         }
-
 @tool
-def Job_Search_Tool(search_queries: list[str], websites: list[str]) -> list[dict]:
+def Job_Search_Tool(search_queries: list[str],websites: list[str],max_job_age_days: int) -> list[dict]:
     """
-    Search for job opportunities using Tavily.
+    Search for recent job opportunities using Tavily.
 
     The search is restricted to the websites provided by the user.
-    Returns relevant job search results including title, URL,
-    content, and source website.
     """
 
     jobs = []
@@ -298,7 +295,8 @@ def Job_Search_Tool(search_queries: list[str], websites: list[str]) -> list[dict
             response = search_client.search(
                 query=search_query,
                 search_depth="advanced",
-                max_results=5
+                max_results=5,
+                days=max_job_age_days
             )
 
             for result in response.get("results", []):
@@ -316,10 +314,6 @@ def Job_Search_Tool(search_queries: list[str], websites: list[str]) -> list[dict
 def scrape_job_Tool(url: str) -> dict:
     """
     Extract structured information from a job listing page.
-
-    The tool extracts the job title, company, location, work mode,
-    description, requirements, technologies, experience level,
-    and application URL.
     """
 
     prompt = """
@@ -329,6 +323,8 @@ def scrape_job_Tool(url: str) -> dict:
     - company
     - location
     - work_mode
+    - posted_date
+    - job_status
     - description
     - requirements
     - technologies
@@ -337,12 +333,17 @@ def scrape_job_Tool(url: str) -> dict:
 
     Return the result as structured JSON.
 
-    Do not invent information.
+    Rules:
 
-    If information is not available, return null.
-
-    Only identify a job as remote when the job listing explicitly
-    states that remote work is supported.
+    - Do not invent information.
+    - If information is not available, return null.
+    - posted_date must be the original job posting date.
+    - Do not use the page update date as posted_date.
+    - Do not use today's date as posted_date.
+    - If the original posting date cannot be verified, return null.
+    - job_status should be active, expired, closed, or null.
+    - Only identify a job as remote when the job listing explicitly
+      states that remote work is supported.
     """
 
     result = scrap_client.smartscraper(

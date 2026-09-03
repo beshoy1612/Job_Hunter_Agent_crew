@@ -41,8 +41,23 @@ class KeywordStrategy(BaseModel):
     search_queries: list[str] = Field(description="Ready-to-use search queries for job-search platforms.")
 
 
+class JobDiscovery(BaseModel):
 
-class JobOpportunity(BaseModel):
+    title: Optional[str] = Field(default=None, description="Title returned by the search result")
+    url: str = Field(description="URL of the discovered job listing")
+
+    content: Optional[str] = Field(default=None,description="Content snippet returned by the search engine")
+
+    source: str = Field(description="Website where the job was discovered")
+
+
+class JobDiscoveryOutput(BaseModel):
+
+    jobs: list[JobDiscovery] = Field(default_factory=list,description="List of discovered job listings")
+
+    
+
+class ScrapedJob(BaseModel):
     title: str = Field(description="Verified job title.")
     company: str = Field(description="Company name.")
     location: Optional[str] = Field(default=None, description="Job location exactly as stated by the source.")
@@ -57,5 +72,5 @@ class JobOpportunity(BaseModel):
     source_website: str = Field(description="Website where the job listing was found.")
 
 
-class JobResearchResult(BaseModel):
-    jobs: List[JobOpportunity] = Field(default_factory=list, description="All verified job opportunities that passed the relevance threshold.")
+class JobScraperOutput(BaseModel):
+    jobs: List[ScrapedJob] = Field(default_factory=list, description="All verified job opportunities that passed the relevance threshold.")

@@ -1,8 +1,9 @@
 from crewai import Task,Agent,Process,Crew,LLM
 from crewai.project import CrewBase,agent,task,crew
-from Scheme import CandidateProfile,KeywordStrategy,JobResearchResult
+from Scheme import CandidateProfile,KeywordStrategy,JobDiscoveryOutput,JobScraperOutput
 from Tools import github_profile_tool,Linked_in_Profile_Tool,Job_Search_Tool,scrape_job_Tool
 from dotenv import load_dotenv
+from Guardrails import freshness_guardrail
 import os
 import agentops
 
@@ -10,7 +11,7 @@ load_dotenv()
 llm = LLM(
     model="gemini/gemini-3.5-flash-lite",
     api_key=os.getenv("GEMINI_API_KEY"),
-    temperature=0.5,
+    temperature=0.2,
 )
 
 @CrewBase
@@ -35,11 +36,20 @@ class Discovery_crew:
         )
     
     @agent
-    def Job_Researcher_Agent(self)->Agent:
+    def Job_Search_Agent(self)->Agent:
         return Agent(
-            config = self.agents_config["Job_Researcher_Agent"],
+            config = self.agents_config["Job_Search_Agent"],
             llm = llm,
-            tools = [Job_Search_Tool,scrape_job_Tool],
+            tools = [Job_Search_Tool],
+            verbose =True
+        )
+    
+    @agent
+    def Job_Scraper_Agent(self)->Agent:
+        return Agent(
+            config = self.agents_config["Job_Scraper_Agent"],
+            llm = llm,
+            tools = [scrape_job_Tool],
             verbose =True
         )
 
@@ -51,6 +61,8 @@ class Discovery_crew:
             output_file="output/profile_analysis.json",
             output_json=CandidateProfile
         )
+
+    
     @task
     def Keyword_Strategist_Task(self)->Task:
         return Task(
@@ -60,15 +72,28 @@ class Discovery_crew:
             output_json=KeywordStrategy,
             context=[self.Profile_Analyst_Task()]
         )
+
+    
     @task 
-    def Job_Researcher_Task(self)->Task:
+    def Job_Search_Task(self)->Task:
         return Task(
-            config=self.tasks_config["Job_Researcher_Task"],
-            agent = self.Job_Researcher_Agent(),
-            output_file="output/jobs.json",
-            output_json=JobResearchResult,
+            config=self.tasks_config["Job_Search_Task"],
+            agent = self.Job_Search_Agent(),
+            output_file="output/search_job_output.json",
+            output_json=JobDiscoveryOutput,
             context=[self.Keyword_Strategist_Task()]
         )
+    
+    @task 
+    def Job_Scraper_Task(self)->Task:
+        return Task(
+            config=self.tasks_config["Job_Scraper_Task"],
+            agent = self.Job_Scraper_Agent(),
+            output_file="output/scrap_job_output.json",
+            output_json=JobScraperOutput,
+            context=[self.Job_Search_Task()],
+        )
+
     
     @crew
     def crew(self) -> Crew:

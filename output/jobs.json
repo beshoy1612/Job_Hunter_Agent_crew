@@ -1,162 +1,102 @@
 {
   "jobs": [
     {
-      "title": "AI & Data",
-      "company": "Global Brands",
+      "title": "Machine Learning Intern",
+      "company": "mylo",
       "location": "Cairo, Egypt",
       "work_mode": "Hybrid",
-      "description": "We are looking for a passionate and motivated AI Intern to join our team. This is a great opportunity for final-year students or fresh graduates who want to gain hands-on experience in Artificial Intelligence, Machine Learning, and Generative AI technologies.",
+      "description": "Assist in designing, training, and fine-tuning machine learning models using Python and modern ML frameworks, clean and preprocess large datasets, and collaborate with the engineering team to integrate model prototypes into production.",
       "requirements": [
-        "Final-year student or recent graduate in Computer Science, AI, Data Science, or related field",
-        "Basic knowledge of Python, Machine Learning fundamentals, and APIs and REST services",
-        "Familiar with at least one: LLMs / Generative AI concepts, Azure OpenAI / AWS AI, LangChain or similar frameworks",
-        "Understanding of data handling (Pandas, NumPy)",
-        "Strong analytical and problem-solving skills"
+        "Currently pursuing a bachelor’s or master’s degree in computer science, data science, statistics, mathematics, or a related quantitative field.",
+        "Proficiency in Python (specifically libraries like Pandas, NumPy, Scikit-Learn, PyTorch, or TensorFlow).",
+        "Solid understanding of machine learning algorithms, statistics, and linear algebra.",
+        "Comfortable working with SQL to query and manipulate large datasets."
       ],
       "technologies": [
         "Python",
         "Pandas",
         "NumPy",
-        "LLMs",
-        "Generative AI",
-        "Azure OpenAI",
-        "AWS",
-        "LangChain",
-        "REST APIs"
+        "Scikit-Learn",
+        "PyTorch",
+        "TensorFlow",
+        "SQL"
       ],
       "experience_level": "Internship",
       "relevance_score": 0.95,
-      "source_url": "https://wuzzuf.net/internship/tnp3jkmtfh2i-ai-data-global-brands-cairo-egypt",
-      "application_url": "https://wuzzuf.net/internship/tnp3jkmtfh2i-ai-data-global-brands-cairo-egypt",
-      "source_website": "https://wuzzuf.net"
+      "source_url": "https://egypt.tanqeeb.com/jobs-in-middle-east/all/jobs/021065226.html",
+      "application_url": "https://www.gulftalent.com/egypt/jobs/machine-learning-intern-606911",
+      "source_website": "https://www.tanqeeb.com"
     },
     {
-      "title": "Junior AI Engineer",
-      "company": "Nile Coders",
+      "title": "Junior Machine Learning Engineer",
+      "company": "Advansys",
       "location": "Cairo, Egypt",
-      "work_mode": "On-site",
-      "description": "We are seeking a Junior AI Engineer with 1 or 2 years of experience in AI systems automation and LLM integration. The role involves ingesting data, integrating with LLMs, and optimizing prompts.",
+      "work_mode": "Hybrid",
+      "description": "Assist in the development, implementation, and monitoring of machine learning models and algorithms under the guidance of senior engineers, conduct data cleaning and preprocessing, and support model evaluation.",
       "requirements": [
-        "Bachelor's degree in Computer Science or related field",
-        "1+ years of hands-on experience in AI/ML development with Python",
-        "1+ years of experience in HTTP-based web development (REST APIs, Flask/Django)",
-        "1+ years working with LLM backends (OpenAI, Anthropic, or open-source models)"
+        "Bachelor's degree in computer science, computer engineering, data science, artificial intelligence, or related field.",
+        "Basic practical understanding of machine learning concepts and algorithms.",
+        "Familiarity with Python and ML frameworks such as scikit-learn, TensorFlow, or Keras.",
+        "Experience with data preprocessing libraries like Pandas and NumPy."
       ],
       "technologies": [
         "Python",
-        "REST APIs",
-        "Flask",
-        "Django",
-        "OpenAI",
-        "Anthropic",
-        "LLMs",
-        "RAG"
+        "scikit-learn",
+        "TensorFlow",
+        "Keras",
+        "Pandas",
+        "NumPy"
       ],
       "experience_level": "Junior",
-      "relevance_score": 0.9,
-      "source_url": "https://www.linkedin.com/jobs/view/4272186699",
-      "application_url": "https://www.linkedin.com/jobs/view/4272186699",
-      "source_website": "https://www.linkedin.com/jobs"
+      "relevance_score": 0.92,
+      "source_url": "https://egypt.tanqeeb.com/jobs-in-middle-east/all/jobs/021046991.html",
+      "application_url": "https://www.gulftalent.com/egypt/jobs/junior-machine-learning-engineer-604925",
+      "source_website": "https://www.tanqeeb.com"
     },
     {
-      "title": "Data Science Intern",
-      "company": "Beltone",
-      "location": "New Cairo, Cairo, Egypt",
+      "title": "ETIC, Summer Internship - Applied AI",
+      "company": "PwC",
+      "location": "Cairo, Egypt",
       "work_mode": "On-site",
-      "description": "The graduate internship is a pre-hiring placement aimed at elevating the skillset of the candidates, providing them with an environment filled with learning and development in data science.",
+      "description": "Gain hands-on experience in a dynamic innovation-driven environment, working on real-world projects involving Applied AI and emerging technologies, and collaborate with industry experts.",
       "requirements": [
-        "Bachelor’s or master’s degree",
-        "Proficiency in Microsoft Office Suite",
-        "Entry level statistical knowledge",
-        "Adept in calculus and linear algebra",
-        "Basic knowledge of data engineering and Python",
-        "Basic understanding of supervised/unsupervised machine learning algorithms"
+        "Senior undergraduate student (graduating in 2027) in Computer Science, Data Science, AI, or related fields.",
+        "Strong communication and organizational abilities.",
+        "Ability to work independently and in a team environment.",
+        "Basic understanding of Python or AI/ML concepts."
       ],
       "technologies": [
         "Python",
-        "SQL",
-        "Tableau",
-        "Power BI",
-        "Machine Learning"
+        "AI/ML concepts",
+        "Cloud platforms"
       ],
       "experience_level": "Internship",
       "relevance_score": 0.88,
-      "source_url": "https://www.linkedin.com/jobs/view/4160343366",
-      "application_url": "https://www.linkedin.com/jobs/view/4160343366",
+      "source_url": "https://eg.linkedin.com/jobs/view/etic-summer-internship-applied-ai-at-pwc-4427509946",
+      "application_url": "https://eg.linkedin.com/jobs/view/etic-summer-internship-applied-ai-at-pwc-4427509946",
       "source_website": "https://www.linkedin.com/jobs"
     },
     {
-      "title": "Python Backend Developer Internship",
-      "company": "Geek Labs",
-      "location": "Maadi, Cairo, Egypt",
-      "work_mode": "On-site",
-      "description": "Geek Labs is looking for fresh Computer Science graduates to join our Backend Developer internship. Interns will build complete websites and products using Python and Javascript.",
+      "title": "Intern Software Engineer (Backend)",
+      "company": "almentor",
+      "location": "Cairo, Egypt",
+      "work_mode": "Hybrid",
+      "description": "Participate in a 3-month Youth Internship Program working alongside top professionals in a fast-growing ed-tech company, with a focus on backend software development tasks and learning real-world engineering practices.",
       "requirements": [
-        "Fresh Computer Science graduates",
-        "Good knowledge of backend system architecture",
-        "Proficiency using Python and the Django framework",
-        "Military service completed or exempt"
+        "Passionate, driven students or fresh graduates ready to step into the professional world.",
+        "Strong problem-solving mindset and eagerness to learn.",
+        "Familiarity with backend programming and foundational computer science concepts."
       ],
       "technologies": [
         "Python",
-        "Django",
-        "Javascript",
-        "Databases",
-        "APIs"
+        "Backend development",
+        "REST APIs"
       ],
       "experience_level": "Internship",
-      "relevance_score": 0.85,
-      "source_url": "https://wuzzuf.net/internship/cPxAknEvzfYa-Python-Backend-Developer-Internship-Geek-Labs-Cairo-Egypt",
-      "application_url": "https://wuzzuf.net/internship/cPxAknEvzfYa-Python-Backend-Developer-Internship-Geek-Labs-Cairo-Egypt",
-      "source_website": "https://wuzzuf.net"
-    },
-    {
-      "title": "Junior AI Automation Specialist (WhatsApp & Business Automation)",
-      "company": "Queens Wear",
-      "location": "Cairo, Egypt",
-      "work_mode": "Remote",
-      "description": "We are seeking an AI Automation Specialist to design and implement intelligent automation solutions for businesses, with a primary focus on WhatsApp-based automation systems and AI integrations.",
-      "requirements": [
-        "0-2 years of experience in automation and AI-driven workflows",
-        "Hands-on experience with one of the automation tools (n8n, Make, Zapier, etc.)",
-        "Some knowledge working with REST APIs",
-        "Ability to work in a remote environment"
-      ],
-      "technologies": [
-        "n8n",
-        "Make",
-        "Zapier",
-        "REST APIs",
-        "WhatsApp Business API",
-        "LLMs",
-        "NLP"
-      ],
-      "experience_level": "Junior",
-      "relevance_score": 0.8,
-      "source_url": "https://wuzzuf.net/jobs/p/jj8k4bk7jr6m-junior-ai-automation-specialist-whatsapp-business-automation-remote-queens-wear-cairo-egypt",
-      "application_url": "https://wuzzuf.net/jobs/p/jj8k4bk7jr6m-junior-ai-automation-specialist-whatsapp-business-automation-remote-queens-wear-cairo-egypt",
-      "source_website": "https://wuzzuf.net"
-    },
-    {
-      "title": "C++ Software Engineering Intern",
-      "company": "Atomica",
-      "location": "Cairo, Egypt",
-      "work_mode": "On-site",
-      "description": "Atomica is seeking C++ Development interns to join our R&D team based in Cairo to help doctors provide patient care using AI, Robotics, and 3D Printing.",
-      "requirements": [
-        "Fresh graduate or student in a relevant technical field",
-        "Good knowledge of C++ programming language"
-      ],
-      "technologies": [
-        "C++",
-        "AI",
-        "Robotics"
-      ],
-      "experience_level": "Internship",
-      "relevance_score": 0.78,
-      "source_url": "https://wuzzuf.net/internship/Ur90gZRLo4PS-C-Software-Engineering-Intern-Atomica-Cairo-Egypt",
-      "application_url": "https://wuzzuf.net/internship/Ur90gZRLo4PS-C-Software-Engineering-Intern-Atomica-Cairo-Egypt",
-      "source_website": "https://wuzzuf.net"
+      "relevance_score": 0.82,
+      "source_url": "https://egypt.tanqeeb.com/jobs-in-middle-east/all/jobs/021053044.html",
+      "application_url": "https://egypt.tanqeeb.com/jobs-in-middle-east/all/jobs/021053044.html",
+      "source_website": "https://www.tanqeeb.com"
     }
   ]
 }

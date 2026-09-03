@@ -1,14 +1,26 @@
 {
-  "professional_summary": "Aspiring Software Engineer and 3rd-year Computer Science student at Ain Shams University with hands-on experience in AI/ML, Cloud Technologies, and Competitive Programming. Experienced in building and deploying ML models on Azure, implementing classical ML models from scratch, and developing software applications using C++, Java, and Python. Active competitive programmer with strong algorithmic foundations.",
+  "professional_summary": "Aspiring Software Engineer with hands-on experience in AI/ML, Cloud Technologies, and Competitive Programming, currently pursuing a Bachelor of Computer Science at Ain Shams University (2023–2027). Seeking internship opportunities to apply technical skills in building scalable AI solutions.",
   "technical_skills": [
-    "Machine Learning & AI",
+    "C++ (OOP)",
+    "Java (OOP)",
+    "Python",
+    "SQL",
+    "Scikit-learn",
+    "NumPy",
+    "Pandas",
+    "Azure ML",
+    "Neural Networks",
     "Model Deployment",
-    "Data Preprocessing & Feature Engineering",
-    "Cloud AI Solutions",
-    "Algorithms & Data Structures",
-    "Object-Oriented Programming (OOP)",
-    "System Programming",
-    "File Handling & Persistence"
+    "Microsoft Azure",
+    "Google Colab",
+    "Git",
+    "Problem Solving",
+    "Algorithms & DS",
+    "Team Collaboration",
+    "Analytical Thinking",
+    "Fast Learner",
+    "Data Preprocessing",
+    "Feature Engineering"
   ],
   "programming_languages": [
     "C++",
@@ -25,70 +37,65 @@
     "Microsoft Azure",
     "Google Colab",
     "Git",
-    "Jupyter Notebook",
-    "SMOTE",
-    "CrewAI"
+    "Jupyter Notebook"
   ],
   "professional_experience": [
-    "DEPI - Digital Egypt Pioneers Initiative: AI & Data Science Track - Microsoft ML Engineer Trainee, Cairo, Egypt (Current – 6 Months)",
-    "Summer Training: AI and ML (120 Hours) - National Telecommunication Institute (NTI), Egypt (Jul 2025)",
-    "Software / ML Intern - Elevoo, Cairo, Egypt (Aug – Sep 2025)"
+    "DEPI - Digital Egypt Pioneers Initiative (In Progress) Current – 6 Months: AI & Data Science Track - Microsoft ML Engineer Trainee, Cairo, Egypt. Built and deployed ML models on Azure, gaining hands-on experience in cloud AI solutions.",
+    "Summer Training: AI and ML (120 Hours) [National Telecommunication Institute (NTI), Egypt] Jul 2025. Completed intensive program in supervised/unsupervised learning (Regression, SVM, K-means, PCA).",
+    "Software / ML Intern Elevoo, Cairo, Egypt Aug – Sep 2025. Preprocessed datasets, engineered features, and built ML models in collaborative environment."
   ],
   "education": [
-    "Bachelor of Computer Science 3rd Year (In Progress), Ain Shams University, Egypt (2023 – 2027)"
+    "Bachelor of Computer Science 3rd Year (In Progress), Ain Shams University, Egypt 2023 – 2027"
   ],
   "projects": [
-    "Mini Operating System: Built functional OS with memory allocation, fault handling mechanisms, and CPU scheduling [C, x86, System Programming].",
-    "Loan Approval Prediction: Loan approval classification (LR, KNN, SVM, DT, RF) using SMOTE [Python, Scikit-learn].",
-    "ML Models From Scratch: KNN, Regression, SVM from scratch.",
-    "Library Management System: Designed Java-based system with OOP principles and data structures [Java].",
-    "Gym Management System: Developed modular C++ system managing members and schedules [C++]."
+    "Mini Operating System [GitHub]: Built functional OS with memory allocation, fault handling mechanisms, and CPU scheduling [C, x86, System Programming].",
+    "Loan Approval Prediction [GitHub]: Loan approval classification (LR, KNN, SVM, DT, RF) using SMOTE [Python, Scikit-learn].",
+    "ML Models From Scratch [GitHub]: KNN, Regression, SVM from scratch.",
+    "Library Management System [GitHub]: Designed Java-based system with OOP principles and data structures [Java].",
+    "Gym Management System [GitHub]: Developed modular C++ system managing members and schedules [C++]."
   ],
   "suitable_job_roles": [
+    "Software Engineer Intern",
     "Machine Learning Intern",
     "AI Engineer Intern",
-    "Junior Software Engineer",
-    "Python Developer",
-    "Data Science Intern"
+    "Junior Machine Learning Engineer",
+    "Junior Python Developer"
   ],
   "experience_level": "Intern",
   "key_strengths": [
-    "Strong competitive programming background with 400+ problems solved on Codeforces and Vjudge",
-    "Practical experience with cloud-based machine learning model deployment (Microsoft Azure)",
-    "Solid foundation in core computer science concepts including Operating Systems, Data Structures, and Algorithms",
-    "Multi-disciplinary technical skill set spanning systems programming (C/C++) and modern AI/ML development (Python)"
+    "Strong foundation in algorithms, data structures, and problem-solving with 400+ problems solved on Codeforces and Vjudge",
+    "Hands-on experience in training and deploying machine learning models on Microsoft Azure",
+    "Practical background in implementing ML models from scratch and utilizing standard data science libraries",
+    "Active participant in competitive programming contests such as ECPC 2024",
+    "Recognized top performer with Huawei HCIA-AI V4.0 Certification"
   ],
   "certifications": [
     "Huawei HCIA-AI V4.0 Certification (Score: 828/1000 - Top performer in AI & ML)",
     "ECPC 2024 Participant (Egyptian Collegiate Programming Contest)",
-    "NVIDIA Deep Learning Certificate",
-    "AI & Machine Learning Foundations (Sprints)"
+    "NVIDIA Deep Learning Certificate (Completed hands-on labs in Deep Learning)"
   ],
   "github_evidence": [
-    "Maintains public repositories demonstrating practical implementation of Machine Learning models from scratch (KNN, Regressions, SVM, Gradient Descent variants)",
-    "Shows completed projects in cloud and AI tasks via 'Elevoo-Tasks' and 'DEPI-final-project'",
-    "Demonstrates systems programming and low-level understanding through 'Operating-System-Projects' in C",
-    "Implements software engineering principles in repositories like 'gym-padel-mangement-system' (C++) and 'Library-Management-System-OOP' (Java)",
-    "Explores modern AI application tooling through repositories such as 'Job_Hunter_Agent_crew', 'mini_rag', and 'Multi-Agent-AI-Systems-Crew_ai-'"
+    "Repositories validate hands-on work with Python, Jupyter Notebook, C++, Java, and C.",
+    "Evidence of structured ML repositories including 'Elevoo-Tasks', 'Models-From-Scratch', 'summer-training-project-applai-', and 'DEPI-final-project'.",
+    "System programming and software engineering evidence shown in 'Operating-System-Projects' (C), 'gym-padel-mangement-system' (C++), and 'Library-Management-System-OOP' (Java).",
+    "Exploration into AI tooling and RAG systems via 'mini_rag', 'Multi_Model_RAG', 'Job_Hunter_Agent_crew', and 'Multi-Agent-AI-Systems-Crew_ai-'."
   ],
   "linkedin_evidence": [
-    "Profile confirms active status as a Computer Science student at Ain Shams University",
-    "Network includes 500+ connections and 3,360+ followers indicating active professional engagement",
-    "Highlights ongoing training and internships with institutions like the National Telecommunication Institute (NTI)",
-    "Lists relevant applied projects such as Heart Disease Prediction and Gym & Padel Management System"
+    "LinkedIn profile URL provided (https://www.linkedin.com/in/beshoy-karam/); detailed professional data retrieved via alternative sources was limited by platform constraints, but professional history aligns with CV entries regarding internships and training."
   ],
   "career_interests": [
     "Artificial Intelligence",
-    "Machine Learning Engineering",
-    "Software Development",
-    "Cloud AI Solutions"
+    "Machine Learning",
+    "Cloud Technologies",
+    "Software Engineering",
+    "Competitive Programming"
   ],
   "preferred_locations": [
     "Cairo, Egypt",
     "Remote"
   ],
   "skill_gaps": [
-    "Limited production-grade enterprise software engineering experience beyond internships and academic projects",
-    "Absence of large-scale production cloud architecture experience outside of managed training environments"
+    "Limited formal production-grade software engineering industry experience beyond internships and training programs",
+    "Broad production deployment experience restricted mostly to cloud learning initiatives (Azure ML)"
   ]
 }
